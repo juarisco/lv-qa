@@ -14,9 +14,13 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest()->paginate(5);
+        // \DB::enableQueryLog();
+        $questions = Question::with('user')->latest()->paginate(10);
 
         return view('questions.index', compact('questions'));
+        // view('questions.index', compact('questions'))->render();
+
+        // dd(\DB::getQueryLog());
     }
 
     /**
@@ -29,7 +33,7 @@ class QuestionsController extends Controller
         //
     }
 
-    /**
+    /**   
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
