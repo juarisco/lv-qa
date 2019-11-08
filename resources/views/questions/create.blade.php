@@ -27,7 +27,8 @@
                                 type="text" 
                                 name="title" 
                                 id="question-title" 
-                                class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" 
+                                class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}"
+                                value="{{ old('title') }}"
                                 placeholder="Question title"
                             >
 
@@ -45,7 +46,7 @@
                                 id="question-body" 
                                 class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" 
                                 rows="10"
-                            ></textarea>
+                            >{{ old('body') }}</textarea>
 
                             @if ($errors->has('body'))
                                 <span class="invalid-feedback" role="alert">
