@@ -20,18 +20,42 @@
 
                 <div class="card-body">
                     <form action="{{ route('questions.store') }}" method="POST">
-                          <div class="form-group">
+                        @csrf
+                        <div class="form-group">
                             <label for="question-title">Question Title</label>
-                            <input type="text" name="title" id="question-title" class="form-control" placeholder="Question title">
-                          </div>
-                          
-                          <div class="form-group">
+                            <input 
+                                type="text" 
+                                name="title" 
+                                id="question-title" 
+                                class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" 
+                                placeholder="Question title"
+                            >
+
+                            @if ($errors->has('title'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('title') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="question-body">Explain your question</label>
-                            <textarea class="form-control" name="body" id="question-body" rows="10"></textarea>
-                          </div>
+                            <textarea 
+                                name="body" 
+                                id="question-body" 
+                                class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" 
+                                rows="10"
+                            ></textarea>
+
+                            @if ($errors->has('body'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('body') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     
                         <div class="form-group">
-                          <button class="btn btn-outline-primary btn-lg" type="submit">Ask this question</button>
+                            <button class="btn btn-outline-primary btn-lg" type="submit">Ask this question</button>
                         </div>
                     </form>
                 </div>
