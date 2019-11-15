@@ -6,11 +6,17 @@
                     <h3>Your Answer</h3>
                     <hr>
 
-                    <form action="" method="POST">
+                    <form action="{{ route('questions.answers.store', $question->id) }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="" content>Contenido</label>
-                            <textarea class="form-control" name="content" id="content" rows="10" cols="30"></textarea>
+                            <textarea class="form-control{{ $errors->has('body') ? ' is-invalid' : '' }}" name="body"
+                                id="body" rows="7">
+                            </textarea>
+                            @if ($errors->has('body'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('body') }}</strong>
+                            </span>
+                            @endif
                         </div>
 
                         <div class="form-group">

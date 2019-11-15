@@ -5,6 +5,8 @@
                 <div class="card-title">
                     <h2>{{ $answerCount . " " . str_plural('Answer', $answerCount) }}</h2>
                     <hr>
+                    @include('layouts._messages')
+
                     @foreach ($answers as $answer)
                     <div class="media">
 
