@@ -56,6 +56,9 @@ class Answer extends Model
         return $this->id === $this->question->best_answer_id;
     }
 
+    /**
+     * Get all of the votes for the answer.
+     */
     public function votes()
     {
         return $this->morphToMany(User::class, 'votable');

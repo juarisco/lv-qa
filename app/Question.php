@@ -80,6 +80,9 @@ class Question extends Model
         return $this->favorites->count();
     }
 
+    /**
+     * Get all of the votes for the question.
+     */
     public function votes()
     {
         return $this->morphToMany(User::class, 'votable');
