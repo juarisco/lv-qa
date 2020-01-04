@@ -45,7 +45,7 @@
 
         @include('answers._index', [
         'answers' => $question->answers,
-        'answerCount' => $question->answers_count
+        'answersCount' => $question->answers_count
         ])
         @include('answers._create')
     </div>
