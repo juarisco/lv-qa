@@ -16,7 +16,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('user-info', require('./components/UserInfo.vue'));
+Vue.component('user-info', require('./components/UserInfo').default);
+import UserInfo from './components/UserInfo.vue';
 
 const app = new Vue({
     el: '#app'

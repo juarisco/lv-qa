@@ -18,6 +18,8 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    protected $appends = ['url', 'avatar'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -95,8 +97,8 @@ class User extends Authenticatable
         }
 
         $model->load('votes');
-        $downVotes = (int) $model->downVotes()->sum('vote');
-        $upVotes = (int) $model->upVotes()->sum('vote');
+        $downVotes = (int)$model->downVotes()->sum('vote');
+        $upVotes = (int)$model->upVotes()->sum('vote');
 
         $model->votes_count = $upVotes + $downVotes;
         $model->save();

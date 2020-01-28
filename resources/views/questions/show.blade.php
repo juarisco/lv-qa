@@ -29,10 +29,12 @@
                                     <div class="col-4"></div>
                                     <div class="col-4"></div>
                                     <div class="col-4">
-                                        @include('shared._author', [
+                                        {{--@include('shared._author', [
                                         'model' => $question,
                                         'label' => 'Asked'
-                                        ])
+                                        ])--}}
+                                        <user-info :model="{{ $question }}" label="Asked"/>
+                                        {{--<user-info2 ></user-info2>--}}
                                     </div>
                                 </div>
                             </div>
