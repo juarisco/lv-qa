@@ -17,7 +17,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('user-info', require('./components/UserInfo').default);
-import UserInfo from './components/UserInfo.vue';
+Vue.component('answer', require('./components/Answer').default);
+
 
 const app = new Vue({
     el: '#app'
