@@ -10911,8 +10911,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.bodyHtml = res.data.body_html;
         alert(res.data.message);
       })["catch"](function (err) {
-        console.log("Something went wrong");
+        alert(err.response.data.message);
+        console.log(err.response);
       });
+    }
+  },
+  computed: {
+    isInvalid: function isInvalid() {
+      return this.body.length < 10;
     }
   }
 });

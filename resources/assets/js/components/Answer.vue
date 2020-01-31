@@ -22,7 +22,7 @@
             },
             cancel() {
                 this.body = this.beforeEditCache;
-                this.editing=false;
+                this.editing = false;
             },
             update() {
                 axios.patch(`/questions/${this.questionId}/answers/${this.id}`, {
@@ -34,8 +34,14 @@
                         alert(res.data.message)
                     })
                     .catch(err => {
-                        console.log("Something went wrong");
+                        alert(err.response.data.message);
+                        console.log(err.response);
                     })
+            }
+        },
+        computed: {
+            isInvalid() {
+                return this.body.length < 10;
             }
         }
     }
