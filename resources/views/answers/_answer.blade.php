@@ -10,8 +10,9 @@
                 <div class="form-group">
                     <textarea rows="10" v-model="body" class="form-control"></textarea>
                 </div>
-                <button type="submit">Update</button>
-                <button type="submit" @click.prevent="editing = false">Cancel</button>
+                {{-- <button type="submit">Update</button> --}}
+                <button class="btn btn-primary">Update</button>
+                <button class="btn btn-outline-secondary" type="button" @click.prevent="cancel">Cancel</button>
             </form>
             <div v-else>
                 <div v-html="bodyHtml"></div>
@@ -19,7 +20,7 @@
                     <div class="col-4">
                         <div class="ml-auto">
                             @can('update',$answer)
-                                <a @click.prevent="editing = true"
+                                <a @click.prevent="edit"
                                    class="btn btn-sm btn-outline-info">Edit</a>
                             @endcan
                             @can('delete', $answer)
