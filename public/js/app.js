@@ -10988,12 +10988,37 @@ __webpack_require__.r(__webpack_exports__);
     return {
       isFavorited: this.question.is_favorited,
       count: this.question.favorites_count,
-      signedIn: true
+      signedIn: true,
+      id: this.question.id
     };
   },
   computed: {
     classes: function classes() {
       return ['favorite', 'mt-2', !this.signedIn ? 'off' : this.isFavorited ? 'favorited' : ''];
+    },
+    endpoint: function endpoint() {
+      return "/questions/".concat(this.id, "/favorites");
+    }
+  },
+  methods: {
+    toggle: function toggle() {
+      this.isFavorited ? this.destroy() : this.create();
+    },
+    destroy: function destroy() {
+      var _this = this;
+
+      axios["delete"](this.endpoint).then(function (res) {
+        _this.count--;
+        _this.isFavorited = false;
+      });
+    },
+    create: function create() {
+      var _this2 = this;
+
+      axios.post(this.endpoint).then(function (res) {
+        _this2.count++;
+        _this2.isFavorited = true;
+      });
     }
   }
 });
@@ -47033,6 +47058,12 @@ var render = function() {
       attrs: {
         href: "",
         title: "Click to mark as favorite question (Click again to undo)"
+      },
+      on: {
+        click: function($event) {
+          $event.preventDefault()
+          return _vm.toggle($event)
+        }
       }
     },
     [
