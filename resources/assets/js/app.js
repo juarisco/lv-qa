@@ -15,6 +15,16 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 Vue.use(VueIziToast);
 
+import policies from './policies';
+Vue.prototype.authorize = function(policy, model) {
+     if (! window.Auth.signedIn) return false;
+
+     if (typeof policy === 'string' && typeof model === 'object') {
+         const user = window.Auth.user;
+
+         return policies[policy](user, model);
+     }
+};
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

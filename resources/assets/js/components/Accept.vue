@@ -1,7 +1,7 @@
 <template>
   <div>
     <a
-      v-if="canAccept"
+      v-if="authorize('accept', answer)"
       title="Mark this answer as best answer"
       :class="classes"
       @click.prevent="create"
